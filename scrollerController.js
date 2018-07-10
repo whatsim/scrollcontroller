@@ -3,7 +3,6 @@ const i2cBus = require('i2c-bus')
 let ready = false
 
 let bus = i2cBus.open(1, (a,b,c)=>{
-	// console.log(a,b,c)
 	ready = true
 	init()
 });
@@ -56,10 +55,6 @@ const LED_GAMMA = [
 
 let currentFrame = 0
 
-// read buttons
-//								i2c address, button register
-// _states = _bus.read_byte_data(0x3f, 0x00)
-
 function init(){
 	setBank(_CONFIG_BANK)
 	write(_address, _MODE_REGISTER, [_PICTURE_MODE])
@@ -83,9 +78,6 @@ function init(){
 	}
 	setBank(0)
 }
-
-
-
 
 function display(pixelArray, gammaAdjust = true){
 	let output = new Array(144)
@@ -147,11 +139,9 @@ function write(addr,cmd,word,cb){
 	if(ready){
 		const buf = Buffer.from(word);
 		bus.writeI2cBlock(addr, cmd, buf.length, buf,(a,b,c)=>{
-			// console.log(a,b,c)
 			if(cb) cb()
 		})
 	}
-	// console.log(addr,cmd,word)
 }
 
 function setBank(bank, cb){

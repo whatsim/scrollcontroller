@@ -14,7 +14,7 @@ DOES NOT SUPPORT ANYTHING OTHER THAN THE SCROLL HD. sorry for shouting.
 Installation
 ============
 
-this will only work on a linux system with an i2c bus. on raspberrian i2c
+this will only work on a linux system with an i2c bus. on raspbian i2c
 is not enabled by default, [here's some information on enabling it.](https://learn.sparkfun.com/tutorials/raspberry-pi-spi-and-i2c-tutorial#i2c-on-pi)
 
 ```

@@ -1,0 +1,14 @@
+{
+  "name": "scroll-hd-controller",
+  "version": "1.0.0",
+  "description": "a small lib to communicate with a pimonroni scroll hd pi hat.",
+  "main": "scrollerController.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "i2c-bus": "^3.0.0"
+  }
+}

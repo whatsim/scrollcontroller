@@ -37,6 +37,9 @@ function display(pixelArray, gammaAdjust = true)
 // displayed as is. the pixel array starts in the upper left, goes across left
 // to right, and then row by row.
 
+```
+```javascript
+
 function clear()
 
 // clear takes no arguments and blanks the display.

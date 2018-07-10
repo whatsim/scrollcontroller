@@ -4,7 +4,7 @@ Scroll HD Controller
 a small lib to communicate with a Pimonroni Scroll HD Pi Hat, ported from 
 [pimoroni's library](https://github.com/pimoroni/scroll-phat-hd)
 
-requires `i2c-bus` and has only been tested on a Raspberry Pi Zero W.
+requires `i2c-bus` [git](https://github.com/fivdi/i2c-bus) and has only been tested on a Raspberry Pi Zero W.
 
 only provides the ability to display pixel arrays, and has no higher level
 functionality.
@@ -49,7 +49,7 @@ function clear()
 Usage
 =====
 
-I've used this library with node-canvas, like so:
+I've used this library with [node-canvas](https://github.com/Automattic/node-canvas), like so:
 
 ```javascript
 

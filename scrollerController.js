@@ -66,22 +66,22 @@ function init(){
 	write(_address, _AUDIOSYNC_REGISTER, [0])
 
 	let validLEDs = [
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b01111111,
-        0b01111111, 0b00000000,
-    ]
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b01111111,
+		0b01111111, 0b00000000,
+	]
 
-    for (let i = 0; i < 2; i++){
-    	setBank(i)
-        write(_address, 0x00, validLEDs)
-    }
-    setBank(0)
+	for (let i = 0; i < 2; i++){
+		setBank(i)
+		write(_address, 0x00, validLEDs)
+	}
+	setBank(0)
 }
 
 
@@ -97,7 +97,7 @@ function display(pixelArray, gammaAdjust = true){
 
 			if (x > 8){
 				x = x - 8
-	            y = 6 - (y + 8)	
+				y = 6 - (y + 8)	
 			} else {
 				x = 8 - x
 			}
@@ -112,31 +112,29 @@ function display(pixelArray, gammaAdjust = true){
 
 	// do the draw
 
-    setBank(currentFrame,()=>{
-    	setTimeout(()=>{
-	    	let chunks = chunker(output, 32)
-	    	let i = 0;
-	    	next()
-	    	function next(e){
-	    		if(e){
-	    			next()
-	    			// repeat on error
-	    		} else {
-		    		if(i === chunks.length - 1){
-						var cb = ()=>{
-							setFrame(currentFrame)	
-						}
-					} else {
-						cb = next
+	setBank(currentFrame,()=>{
+		let chunks = chunker(output, 32)
+		let i = 0;
+		next()
+		function next(e){
+			if(e){
+				next()
+				// repeat on error
+			} else {
+				if(i === chunks.length - 1){
+					var cb = ()=>{
+						setFrame(currentFrame)	
 					}
-					write(_address, _COLOR_OFFSET + offset, chunks[i], cb)
-					offset += 32
-					i++
+				} else {
+					cb = next
 				}
+				write(_address, _COLOR_OFFSET + offset, chunks[i], cb)
+				offset += 32
+				i++
 			}
-		})
-    })
-    
+		}
+	})
+	
 }
 
 function clear(){

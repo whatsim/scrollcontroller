@@ -11,6 +11,13 @@ functionality.
 
 DOES NOT SUPPORT ANYTHING OTHER THAN THE SCROLL HD. sorry for shouting.
 
+Installation
+============
+
+```
+$ npm install git+https://git@github.com/whatsim/scrollcontroller.git
+```
+
 API
 ===
 

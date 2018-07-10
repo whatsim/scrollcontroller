@@ -69,14 +69,14 @@ let imageBuffer = new Uint8Array(canvas.toBuffer('raw'))
 let displayArray = []
 
 // copy pixels out of the buffer into an array suitable to sending to 
-// scrollerController, note that the buffer from node canvas is RGBA, so
+// scrollerController, note that the buffer from node canvas is ARGB, so
 // we only copy one value for each 4 bytes in the buffer.
 
 for(let i = 1; i < imageBuffer.length; i += 4){
 	displayArray.push(imageBuffer[i])
 }
 
-// call display with out pixel array
+// call display with our pixel array
 scrollerController.display(displayArray)
 
 ```

@@ -1,7 +1,7 @@
 Scroll HD Controller
 ====================
 
-a small lib to communicate with a Pimonroni Scroll HD Pi Hat, ported from 
+a small nodejs module to communicate with a Pimonroni Scroll HD Pi Hat, ported from 
 [pimoroni's library](https://github.com/pimoroni/scroll-phat-hd)
 
 requires `i2c-bus` \[[git](https://github.com/fivdi/i2c-bus)\] and has only been tested on a Raspberry Pi Zero W.

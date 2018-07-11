@@ -4,7 +4,9 @@ Scroll HD Controller
 a small nodejs module to communicate with a Pimonroni Scroll HD Pi Hat, ported from 
 [pimoroni's library](https://github.com/pimoroni/scroll-phat-hd)
 
-requires `i2c-bus` \[[git](https://github.com/fivdi/i2c-bus)\] and has only been tested on a Raspberry Pi Zero W.
+requires `i2c-bus` \[[git](https://github.com/fivdi/i2c-bus)\] and has ONLY been
+tested on a Raspberry Pi Zero W with node v9.10.1. >v8 will probably work, but
+I again haven't tested.
 
 only provides the ability to display pixel arrays, and has no higher level
 functionality.

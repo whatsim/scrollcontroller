@@ -1,5 +1,5 @@
 {
-  "name": "scroll-hd-controller",
+  "name": "scrollcontroller",
   "version": "1.0.0",
   "description": "a small lib to communicate with a pimonroni scroll hd pi hat.",
   "main": "scrollerController.js",

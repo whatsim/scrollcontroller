@@ -56,7 +56,7 @@ I've used this library with [node-canvas](https://github.com/Automattic/node-can
 ```javascript
 
 // init scrollController
-const scrollController = require('scrollcontroller')
+const scrollController = require('scroll-controller')
 
 // setup a canvas
 const canvas = new Canvas(17,7)

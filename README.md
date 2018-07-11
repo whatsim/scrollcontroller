@@ -26,7 +26,7 @@ $ npm install git+https://git@github.com/whatsim/scrollcontroller.git
 API
 ===
 
-scrollerController exports two methods:
+scrollController exports two methods:
 
 ```javascript
 
@@ -55,8 +55,8 @@ I've used this library with [node-canvas](https://github.com/Automattic/node-can
 
 ```javascript
 
-// init scrollerController
-const scrollerController = require('scrollerController')
+// init scrollController
+const scrollController = require('scrollController')
 
 // setup a canvas
 const canvas = new Canvas(17,7)
@@ -71,7 +71,7 @@ let imageBuffer = new Uint8Array(canvas.toBuffer('raw'))
 let displayArray = []
 
 // copy pixels out of the buffer into an array suitable to sending to 
-// scrollerController, note that the buffer from node canvas is ARGB, so
+// scrollController, note that the buffer from node canvas is ARGB, so
 // we only copy one value for each 4 bytes in the buffer.
 
 for(let i = 1; i < imageBuffer.length; i += 4){
@@ -79,14 +79,14 @@ for(let i = 1; i < imageBuffer.length; i += 4){
 }
 
 // call display with our pixel array
-scrollerController.display(displayArray)
+scrollController.display(displayArray)
 
 ```
 
 on my own setup, I've had difficulty getting the screen to init from a cold 
 boot. on system startup I run [pimoroni's plasma.py](https://github.com/pimoroni/scroll-phat-hd/blob/master/examples/plasma.py)
 example for a second, kill it, and then run my script that uses
-scrollerController. soft restarts don't require this treatment, only full 
+scrollController. soft restarts don't require this treatment, only full 
 system shutdown where the scrollPhat HD loses power.
 
 TODO

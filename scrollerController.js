@@ -112,11 +112,12 @@ function display(pixelArray, gammaAdjust = true){
 	setBank(currentFrame,()=>{
 		let chunks = chunker(output, 32)
 		let i = 0;
-		next()
+		write(_address, _COLOR_OFFSET + offset, chunks[i], next)
+		
 		function next(e){
 			if(e){
-				next()
 				// repeat on error
+				write(_address, _COLOR_OFFSET + offset, chunks[i], next)
 			} else {
 				if(i === chunks.length - 1){
 					var cb = ()=>{
@@ -125,13 +126,12 @@ function display(pixelArray, gammaAdjust = true){
 				} else {
 					cb = next
 				}
-				write(_address, _COLOR_OFFSET + offset, chunks[i], cb)
 				offset += 32
 				i++
+				write(_address, _COLOR_OFFSET + offset, chunks[i], cb)
 			}
 		}
 	})
-	
 }
 
 function clear(){

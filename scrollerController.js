@@ -120,15 +120,12 @@ function display(pixelArray, gammaAdjust = true){
 				write(_address, _COLOR_OFFSET + offset, chunks[i], next)
 			} else {
 				if(i === chunks.length - 1){
-					var cb = ()=>{
-						setFrame(currentFrame)	
-					}
+					setFrame(currentFrame)	
 				} else {
-					cb = next
+					offset += 32
+					i++
+					write(_address, _COLOR_OFFSET + offset, chunks[i], next)
 				}
-				offset += 32
-				i++
-				write(_address, _COLOR_OFFSET + offset, chunks[i], cb)
 			}
 		}
 	})

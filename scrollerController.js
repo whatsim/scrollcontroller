@@ -137,9 +137,9 @@ function sleep(goToSleep, cb){
 }
 
 function reset(){
-	sleep(false,()=>{
+	sleep(true,()=>{
 		setTimeout(()=>{
-			sleep(true)
+			sleep(false)
 		})
 	})
 }

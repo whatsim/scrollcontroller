@@ -89,11 +89,6 @@ example for a second, kill it, and then run my script that uses
 scrollController. soft restarts don't require this treatment, only full 
 system shutdown where the scrollPhat HD loses power.
 
-TODO
-====
-
-ensure that this library can init the display from a cold boot.
-
 Support
 =======
 

@@ -61,6 +61,7 @@ const LED_GAMMA = [
 let currentFrame = 0
 
 function init(){
+	reset()
 	setBank(_CONFIG_BANK)
 	write(_address, _MODE_REGISTER, [_PICTURE_MODE])
 	write(_address, _AUDIOSYNC_REGISTER, [0])
@@ -128,6 +129,18 @@ function display(pixelArray, gammaAdjust = true){
 				}
 			}
 		}
+	})
+}
+
+function sleep(goToSleep, cb){
+	setRegister(_CONFIG_BANK, _SHUTDOWN_REGISTER, !goToSleep, cb)
+}
+
+function reset(){
+	sleep(false,()=>{
+		setTimeout(()=>{
+			sleep(true)
+		})
 	})
 }
 

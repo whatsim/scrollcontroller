@@ -51,7 +51,27 @@ function clear()
 Usage
 =====
 
-I've used this library with [node-canvas](https://github.com/Automattic/node-canvas), like so:
+Here's a minimal example that shows an alternating field of pixels.
+
+```javascript
+// get a reference to scrollcontroller
+const scrollController = require('scroll-controller')
+
+// make an array of 0-255 pixels
+let arr = []
+
+for(var i = 0; i < 119; i++){
+    arr[i] = i%2 == 0 ? 255 : 0
+}
+
+// scrollController will drop messages it receives before the display is init'ed
+// so we wait 100ms and then call display with our pixel array.
+setTimeout(()=>{
+    scrollController.display(arr)
+},100)
+```
+
+I've primarily used this library with [node-canvas](https://github.com/Automattic/node-canvas), like so:
 
 ```javascript
 

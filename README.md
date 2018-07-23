@@ -83,12 +83,6 @@ scrollController.display(displayArray)
 
 ```
 
-on my own setup, I've had difficulty getting the screen to init from a cold 
-boot. on system startup I run [pimoroni's plasma.py](https://github.com/pimoroni/scroll-phat-hd/blob/master/examples/plasma.py)
-example for a second, kill it, and then run my script that uses
-scrollController. soft restarts don't require this treatment, only full 
-system shutdown where the scrollPhat HD loses power.
-
 Support
 =======
 

@@ -65,7 +65,7 @@ Here's a minimal example that shows an alternating field of pixels.
 
 ```javascript
 // get a reference to scrollcontroller
-const scrollController = new (require('scroll-controller')())
+const scrollController = new(require('scroll-controller'))()
 
 // make an array of 0-255 pixels
 let arr = []
@@ -82,9 +82,8 @@ scrollController.init().then(() => {
 I've primarily used this library with [node-canvas](https://github.com/Automattic/node-canvas), like so:
 
 ```javascript
-
 // get a reference to scrollcontroller
-const scrollController = new (require('scroll-controller')())
+const scrollController = new(require('scroll-controller'))()
 
 // setup a canvas
 const canvas = new Canvas(17,7)

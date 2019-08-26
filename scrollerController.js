@@ -1,6 +1,6 @@
 const i2cBus = require('i2c-bus')
 
-module.exports = class ScrollerController {
+module.exports = class ScrollController {
   constructor() {
     this.bus = null
 
@@ -160,7 +160,7 @@ module.exports = class ScrollerController {
   }
 
   async display(pixelArray, gammaAdjust = true) {
-    let output = new Array(144)
+    let output = new Array(161)
     output.fill(0)
     if (gammaAdjust) {
       for (let i = 0; i < pixelArray.length; i++) {

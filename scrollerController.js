@@ -34,9 +34,7 @@ module.exports = class ScrollController {
     ]
 
     this.currentFrame = 0
-    this.chunks = []
-    this.currentChunk = 0
-    this.offset = 0
+    
   }
 
   write(addr, cmd, data) {
@@ -178,21 +176,23 @@ module.exports = class ScrollController {
       }
     }
     this.currentFrame = this.currentFrame == 0 ? 1 : 0
-    this.offset = 0
+    
 
     await this.setBank(this.currentFrame)
 
-    this.chunks = this.chunker(output, 32)
-    this.currentChunk = 0
+    let chunkSize = 32
+    let chunks = this.chunker(output, chunkSize)
+    let currentChunk = 0
 
-    while (this.currentChunk !== this.chunks.length - 1) {
+    while (currentChunk < chunks.length - 1) {
+      
       await this.write(
         this.defaultAddress, 
-        this.COLOR_OFFSET + this.offset,
-        this.chunks[this.currentChunk]
+        this.COLOR_OFFSET + currentChunk * chunkSize,
+        chunks[currentChunk]
       )
-      this.offset += 32
-      this.currentChunk++
+      
+      currentChunk++
     }
     await this.setFrame(this.currentFrame)
   }

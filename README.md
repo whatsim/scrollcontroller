@@ -26,11 +26,19 @@ $ npm install git+https://git@github.com/whatsim/scrollcontroller.git
 API
 ===
 
-scrollController exports two methods:
+scrollController exports a class with three methods:
 
 ```javascript
 
-function display(pixelArray, gammaAdjust = true)
+init()
+
+// will return a promise which will be resolved when the display will be initialized
+// you must call this method before any call to other methods
+
+```
+```javascript
+
+display(pixelArray, gammaAdjust = true)
 
 // takes a pixel array, that is: a 119 length int array bounded between
 // [0-255] where 255 is white and 0 is black. if you omit or pass `gammaAdjust` 
@@ -38,13 +46,15 @@ function display(pixelArray, gammaAdjust = true)
 // the gamma curve from pimoroni. if you set it to false, the values are
 // displayed as is. the pixel array starts in the upper left, goes across left
 // to right, and then row by row.
+// this method also return a promise which will be resolved when the display has been updated
 
 ```
 ```javascript
 
-function clear()
+clear()
 
 // clear takes no arguments and blanks the display.
+// this method return a similar promise than the display method
 
 ```
 
@@ -55,7 +65,7 @@ Here's a minimal example that shows an alternating field of pixels.
 
 ```javascript
 // get a reference to scrollcontroller
-const scrollController = require('scroll-controller')
+const scrollController = new(require('scroll-controller'))()
 
 // make an array of 0-255 pixels
 let arr = []
@@ -64,19 +74,16 @@ for(var i = 0; i < 119; i++){
     arr[i] = i%2 == 0 ? 255 : 0
 }
 
-// scrollController will drop messages it receives before the display is init'ed
-// so we wait 100ms and then call display with our pixel array.
-setTimeout(()=>{
+scrollController.init().then(() => {
     scrollController.display(arr)
-},100)
+})
 ```
 
 I've primarily used this library with [node-canvas](https://github.com/Automattic/node-canvas), like so:
 
 ```javascript
-
-// init scrollController
-const scrollController = require('scroll-controller')
+// get a reference to scrollcontroller
+const scrollController = new(require('scroll-controller'))()
 
 // setup a canvas
 const canvas = new Canvas(17,7)
@@ -98,8 +105,10 @@ for(let i = 1; i < imageBuffer.length; i += 4){
 	displayArray.push(imageBuffer[i])
 }
 
-// call display with our pixel array
-scrollController.display(displayArray)
+// init and display
+scrollController.init().then(() => {
+    scrollController.display(displayArray)
+})
 
 ```
 
